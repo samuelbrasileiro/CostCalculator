@@ -13,9 +13,13 @@
 		7E369628240D800B00CC5168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E369626240D800B00CC5168 /* Main.storyboard */; };
 		7E36962A240D800F00CC5168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E369629240D800F00CC5168 /* Assets.xcassets */; };
 		7E36962D240D800F00CC5168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E36962B240D800F00CC5168 /* LaunchScreen.storyboard */; };
-		7E369637240D826600CC5168 /* DispTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E369636240D826600CC5168 /* DispTableViewController.swift */; };
-		7E369639240D835100CC5168 /* DispTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E369638240D835100CC5168 /* DispTableViewCell.swift */; };
-		7EC5A0E1240EE0290044865E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5A0E0240EE0290044865E /* Result.swift */; };
+		7E7495DF241961AE00F3EA68 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7495DE241961AE00F3EA68 /* Result.swift */; };
+		7E7495E424197F8700F3EA68 /* Aspira Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7495E124197F8600F3EA68 /* Aspira Bold.otf */; };
+		7E7495E524197F8700F3EA68 /* Aspira Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7495E224197F8600F3EA68 /* Aspira Light.otf */; };
+		7E7495E624197F8700F3EA68 /* Aspira Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E7495E324197F8600F3EA68 /* Aspira Medium.otf */; };
+		7E7495E9241AAA1100F3EA68 /* SystemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7495E7241AAA1100F3EA68 /* SystemTableViewCell.swift */; };
+		7E7495EA241AAA1200F3EA68 /* SystemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7495E8241AAA1100F3EA68 /* SystemTableViewCell.xib */; };
+		7EC5A0E1240EE0290044865E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5A0E0240EE0290044865E /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +31,13 @@
 		7E369629240D800F00CC5168 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E36962C240D800F00CC5168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E36962E240D800F00CC5168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E369636240D826600CC5168 /* DispTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispTableViewController.swift; sourceTree = "<group>"; };
-		7E369638240D835100CC5168 /* DispTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispTableViewCell.swift; sourceTree = "<group>"; };
-		7EC5A0E0240EE0290044865E /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7E7495DE241961AE00F3EA68 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7E7495E124197F8600F3EA68 /* Aspira Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aspira Bold.otf"; sourceTree = "<group>"; };
+		7E7495E224197F8600F3EA68 /* Aspira Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aspira Light.otf"; sourceTree = "<group>"; };
+		7E7495E324197F8600F3EA68 /* Aspira Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aspira Medium.otf"; sourceTree = "<group>"; };
+		7E7495E7241AAA1100F3EA68 /* SystemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemTableViewCell.swift; sourceTree = "<group>"; };
+		7E7495E8241AAA1100F3EA68 /* SystemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemTableViewCell.xib; sourceTree = "<group>"; };
+		7EC5A0E0240EE0290044865E /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +70,30 @@
 		7E36961F240D800B00CC5168 /* Cost Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				7EC5A0E0240EE0290044865E /* Result.swift */,
+				7E7495E024197F0600F3EA68 /* Extra */,
+				7EC5A0E0240EE0290044865E /* ResultView.swift */,
+				7E7495E7241AAA1100F3EA68 /* SystemTableViewCell.swift */,
+				7E7495E8241AAA1100F3EA68 /* SystemTableViewCell.xib */,
 				7E369620240D800B00CC5168 /* AppDelegate.swift */,
 				7E369622240D800B00CC5168 /* SceneDelegate.swift */,
 				7E369624240D800B00CC5168 /* ViewController.swift */,
+				7E7495DE241961AE00F3EA68 /* Result.swift */,
 				7E369626240D800B00CC5168 /* Main.storyboard */,
-				7E369638240D835100CC5168 /* DispTableViewCell.swift */,
-				7E369636240D826600CC5168 /* DispTableViewController.swift */,
-				7E369629240D800F00CC5168 /* Assets.xcassets */,
 				7E36962B240D800F00CC5168 /* LaunchScreen.storyboard */,
 				7E36962E240D800F00CC5168 /* Info.plist */,
 			);
 			path = "Cost Calculator";
+			sourceTree = "<group>";
+		};
+		7E7495E024197F0600F3EA68 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				7E369629240D800F00CC5168 /* Assets.xcassets */,
+				7E7495E124197F8600F3EA68 /* Aspira Bold.otf */,
+				7E7495E224197F8600F3EA68 /* Aspira Light.otf */,
+				7E7495E324197F8600F3EA68 /* Aspira Medium.otf */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +154,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7495E524197F8700F3EA68 /* Aspira Light.otf in Resources */,
+				7E7495E624197F8700F3EA68 /* Aspira Medium.otf in Resources */,
 				7E36962D240D800F00CC5168 /* LaunchScreen.storyboard in Resources */,
 				7E36962A240D800F00CC5168 /* Assets.xcassets in Resources */,
+				7E7495EA241AAA1200F3EA68 /* SystemTableViewCell.xib in Resources */,
 				7E369628240D800B00CC5168 /* Main.storyboard in Resources */,
+				7E7495E424197F8700F3EA68 /* Aspira Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,12 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EC5A0E1240EE0290044865E /* Result.swift in Sources */,
+				7E7495E9241AAA1100F3EA68 /* SystemTableViewCell.swift in Sources */,
+				7EC5A0E1240EE0290044865E /* ResultView.swift in Sources */,
+				7E7495DF241961AE00F3EA68 /* Result.swift in Sources */,
 				7E369625240D800B00CC5168 /* ViewController.swift in Sources */,
 				7E369621240D800B00CC5168 /* AppDelegate.swift in Sources */,
-				7E369639240D835100CC5168 /* DispTableViewCell.swift in Sources */,
 				7E369623240D800B00CC5168 /* SceneDelegate.swift in Sources */,
-				7E369637240D826600CC5168 /* DispTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
