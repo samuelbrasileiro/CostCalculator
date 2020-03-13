@@ -39,13 +39,14 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        calcule.frame = CGRect(x: self.view.frame.width/2 - 60, y: self.view.frame.height - 350, width: 120, height: 48)
+        self.view.bringSubviewToFront(calcule)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(gesture)
         
         scrollView.isHidden = true
         
-        tableView.frame = CGRect(x: 0, y: 10, width: self.view.frame.width, height: 420)
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 360)
         
         tableView.register(UINib(nibName: "SystemTableViewCell", bundle: nil), forCellReuseIdentifier: "SystemTableViewCell")
         
@@ -55,10 +56,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         
         
         systems = []
-        systems.append(System(name: "Eletrônicos",  image: "tv"))
+        systems.append(System(name: "Televisão",  image: "tv"))
         systems.append(System(name: "Climatização", image: "snow"))
         systems.append(System(name: "Iluminação", image: "lightbulb"))
-        systems.append(System(name: "Ilumieeenação", image: "lightbulb"))
+        systems.append(System(name: "Estúdio", image: "guitars"))
         
         tableView.reloadData()
         
@@ -174,7 +175,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
     
     //MARK:- SCROLL VIEW
     func revealScrollView(){
-        let width = 414
+        let width = self.view.frame.width
         
         
         let energiaGeral = sumTexts()
@@ -197,12 +198,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         geral.setEnergy(energy: energiaGeral)
         geral.setTime(time: selectedTime)
         let geralView = ResultView(system: geral)
-        geralView.frame = CGRect(x: 17, y: 0, width: width-34, height: 344)
+        geralView.frame = CGRect(x: 17, y: 0, width: width-34, height: 290)
         scrollView.addSubview(geralView)
         
         for index in 0..<systems.count{
             let resultView = ResultView(system: systems[index])
-            resultView.frame = CGRect(x: 17 + (width * (index + 1)), y: 0, width: width-34, height: 344)
+            resultView.frame = CGRect(x: 17 + (width * CGFloat(index + 1)), y: 40, width: width-34, height: 260)
             scrollView.addSubview(resultView)
         }
         
@@ -225,10 +226,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(systems.count + 1), height: scrollView.frame.height)
         scrollView.isPagingEnabled = true
         
-        scrollView.frame = CGRect(x: self.view.frame.width, y: self.view.frame.height - 362, width: 414, height: 362)
+        scrollView.frame = CGRect(x: self.view.frame.width, y: self.view.frame.height - 302, width: self.view.frame.width, height: 302)
         pageControl.numberOfPages = systems.count + 1
         UIView.animateKeyframes(withDuration: 4, delay: 1, options: [.beginFromCurrentState,.calculationModeDiscrete], animations: {
-            self.scrollView.frame.origin = CGPoint(x: 0, y: self.view.frame.height - 362)
+            self.scrollView.frame.origin = CGPoint(x: 0, y: self.view.frame.height - 302)
             
         })
         
