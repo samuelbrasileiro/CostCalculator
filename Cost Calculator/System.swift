@@ -44,11 +44,11 @@ class System{
     var name: String
     var energy: Int
     var note: String = ""
-    var image: String
+    var image: UIImage
     var time: Time
     init(name: String, image: String){
         self.name = name
-        self.image = image
+        self.image = UIImage(systemName: image) ?? UIImage(systemName: "power")!
         self.energy = 0
         self.time = .monthly
     }
@@ -57,16 +57,21 @@ class System{
         return (Double(energy) * 0.527 * time.getDays())
     }
     func analisarUtilidade()->String{
-        if Double(energy)/15 >= 1 {
+        var div:Double = 15
+        if name == "Geral"{
+            div *= 3
+        }
+        
+        if Double(energy)/div >= 1 {
             return "Você consumiu muita energia hoje neste meio. Diminua o ritmo para pagar menos no fim do mês!"
-        } else if Double(energy)/15 <= 0.5{
+        } else if Double(energy)/div <= 0.5{
             return "Está perfeitamente economizando energia, continue assim, por favor!"
         }
         else {
             return "Você consumiu muito mas não tanto hoje. Cuidado com consumos futuros."}
     }
     func getImage() -> UIImage {
-        return UIImage(systemName: image)!
+        return image
     }
     func setEnergy(energy: Int){
         self.energy = energy

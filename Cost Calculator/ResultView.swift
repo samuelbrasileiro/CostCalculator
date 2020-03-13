@@ -33,7 +33,7 @@ class ResultView: UIView {
         Note.numberOfLines = 4
         Note.font = UIFont(name: "Aspira", size: 18)
         
-        let Icone = UIImageView(image: UIImage(systemName: image))
+        let Icone = UIImageView(image: image)
         Icone.frame = CGRect(x: 8, y: 8, width: 65, height: 65)
         Icone.tintColor = .black
         Icone.contentMode = .scaleAspectFit

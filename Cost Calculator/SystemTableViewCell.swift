@@ -22,6 +22,7 @@ class SystemTableViewCell: UITableViewCell, UITextFieldDelegate{
         icone.layer.cornerRadius = self.icone.frame.height/4
         icone.clipsToBounds = true
         textField.delegate = self
+        textField.keyboardType = UIKeyboardType.decimalPad
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
