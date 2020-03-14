@@ -46,21 +46,21 @@ class System{
     var note: String = ""
     var image: UIImage
     var time: Time
+    var isGeral: Bool
     init(name: String, image: String){
         self.name = name
         self.image = UIImage(systemName: image) ?? UIImage(systemName: "power")!
         self.energy = 0
         self.time = .monthly
+        self.isGeral = false
     }
     
     func estimarCusto()->Double{
         return (Double(energy) * 0.527 * time.getDays())
     }
-    func analisarUtilidade()->String{
-        var div:Double = 15
-        if name == "Geral"{
-            div *= 3
-        }
+    func analisarUtilidade(div: Double)->String{
+        let div:Double = 15
+    
         
         if Double(energy)/div >= 1 {
             return "Você consumiu muita energia hoje neste meio. Diminua o ritmo para pagar menos no fim do mês!"

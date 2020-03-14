@@ -14,7 +14,11 @@ class ResultView: UIView {
         super.init(frame: CGRect(x: 17, y: 0, width: 397, height: 344))
         let name = system.name
         let price = system.estimarCusto()
-        let note = system.analisarUtilidade()
+        var div:Double = 10
+        if system.isGeral{
+            div *= Double(systems.count)
+        }
+        let note = system.analisarUtilidade(div: div)
         let image = system.image
         let Name = UILabel()
         Name.frame = CGRect(x: 79, y: 14, width: 327, height: 54)
@@ -28,7 +32,7 @@ class ResultView: UIView {
         Price.font = UIFont(name: "Aspira", size: 18)
         
         let Note = UILabel()
-        Note.frame = CGRect(x: 8, y: 160, width: 340, height: 165)
+        Note.frame = CGRect(x: 8, y: 120, width: 340, height: 140)
         Note.text = note
         Note.numberOfLines = 4
         Note.font = UIFont(name: "Aspira", size: 18)
@@ -48,7 +52,7 @@ class ResultView: UIView {
         Estimate.font = UIFont(name: "Aspira", size: 18)
         
         let MNote = UILabel()
-        MNote.frame = CGRect(x: 8, y: 138, width: 184, height: 54)
+        MNote.frame = CGRect(x: 8, y: 130, width: 184, height: 54)
         MNote.text = "Recado:"
         MNote.font = UIFont(name: "Aspira", size: 18)
         

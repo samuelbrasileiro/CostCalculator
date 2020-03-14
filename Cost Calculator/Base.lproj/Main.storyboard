@@ -12,7 +12,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Calculadora de gastos-->
+        <!--Energee-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Cost_Calculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yB7-YR-kPd">
-                                <rect key="frame" x="9" y="350" width="159" height="30"/>
+                                <rect key="frame" x="0.0" y="440" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Adicionar novo sistema"/>
                                 <connections>
@@ -49,8 +49,9 @@
                         <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calculadora de gastos" id="t3J-tF-ogd"/>
+                    <navigationItem key="navigationItem" title="Energee" id="t3J-tF-ogd"/>
                     <connections>
+                        <outlet property="adicionarLabel" destination="yB7-YR-kPd" id="MJp-NC-KFw"/>
                         <outlet property="calcule" destination="fDN-99-p81" id="z5Q-Mh-a69"/>
                         <outlet property="pageControl" destination="PTb-rH-mjJ" id="lbC-XL-ODY"/>
                     </connections>

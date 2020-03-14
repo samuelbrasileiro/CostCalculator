@@ -17,6 +17,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
 
     @IBOutlet weak var calcule: UIButton!
     
+    @IBOutlet var adicionarLabel: UIButton!
     
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -39,7 +40,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
-        calcule.frame = CGRect(x: self.view.frame.width/2 - 60, y: self.view.frame.height - 350, width: 120, height: 48)
+        calcule.frame = CGRect(x: self.view.frame.width/2 - 60, y: self.view.frame.height - 330, width: 120, height: 48)
+        calcule.layer.cornerRadius = 5
+        calcule.layer.masksToBounds = true
+        adicionarLabel.frame = CGRect(x: 0, y: self.view.frame.height - 360, width: 160, height: 30)
         self.view.bringSubviewToFront(calcule)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(gesture)
@@ -56,10 +60,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         
         
         systems = []
-        systems.append(System(name: "Televisão",  image: "tv"))
-        systems.append(System(name: "Climatização", image: "snow"))
-        systems.append(System(name: "Iluminação", image: "lightbulb"))
+        
         systems.append(System(name: "Estúdio", image: "guitars"))
+        systems.append(System(name: "Aquecedor", image: "flame"))
+        systems.append(System(name: "Home Teather",  image: "hifispeaker"))
+        systems.append(System(name: "Iluminação", image: "lightbulb"))
+        
         
         tableView.reloadData()
         
@@ -135,38 +141,26 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
     }
     
     @objc func buttonDismiss(_ sender: UIButton){
-        print("sss")
         systems[systems.count - 1].image = sender.imageView!.image!
         tableView.reloadData()
         self.dismiss(animated: true, completion: nil)
     }
     
     func isTextLeft() -> Bool{
-        tableView.reloadData()
-        for cell in tableView.visibleCells {
-            print(type(of: cell))
-            guard let cell = cell as? SystemTableViewCell else{
-                fatalError("The dequeued cell is not an instance of SystemTableViewCell.")
-            }
+        
+        for cell in allCells {
             if cell.textField.text == ""{
                 return true
             }
         }
         
-        for index in 0..<systems.count-1{
-            print(systems[index].name)
-            
-        }
         return false
     }
     
     func sumTexts() -> Int{
         var sum: Int = 0
-        for index in 0..<tableView.visibleCells.count{
-            
-            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SystemTableViewCell  else {
-                fatalError("The dequeued cell is not an instance of SystemTableViewCell.")
-            }
+        for index in 0..<allCells.count{
+            let cell = allCells[index]
             sum += Int(cell.textField!.text!)!
         }
         return sum
@@ -181,24 +175,20 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         let energiaGeral = sumTexts()
         
         let selectedTime = Time(rawValue: pickerView.selectedRow(inComponent: 0))!
-        
-
-        print(selectedTime)
-        
-        for index in 0..<tableView.visibleCells.count{
-            print(systems[index].name)
-            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SystemTableViewCell  else {
-                fatalError("The dequeued cell is not an instance of SystemTableViewCell.")
-            }
+                
+        for index in 0..<allCells.count{
+            let cell = allCells[index]
             systems[index].setEnergy(energy: Int(cell.textField!.text!)!)
             systems[index].setTime(time: selectedTime)
+            
         }
         
         let geral = System(name: "Geral", image: "house")
         geral.setEnergy(energy: energiaGeral)
         geral.setTime(time: selectedTime)
+        geral.isGeral = true
         let geralView = ResultView(system: geral)
-        geralView.frame = CGRect(x: 17, y: 0, width: width-34, height: 290)
+        geralView.frame = CGRect(x: 17, y: 40, width: width-34, height: 260)
         scrollView.addSubview(geralView)
         
         for index in 0..<systems.count{
@@ -208,6 +198,24 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         }
         
     }
+    func getAllCells() -> [UITableViewCell] {
+
+       var cells = [UITableViewCell]()
+       // assuming tableView is your self.tableView defined somewhere
+       for i in 0...tableView.numberOfSections-1
+       {
+        for j in 0...tableView.numberOfRows(inSection: i)-1
+           {
+            if let cell = tableView.cellForRow(at: NSIndexPath(row: j, section: i) as IndexPath) {
+
+                  cells.append(cell)
+               }
+
+           }
+       }
+    return cells
+    }
+    
     func setupHelpButton(){
         self.navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .done, target: self, action: #selector(helpAlert)), animated: true)
     }
@@ -277,9 +285,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
     
     //MARK:- TABLE VIEW
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("hato")
         return systems.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -293,16 +299,19 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
             fatalError("The dequeued cell is not an instance of SystemTableViewCell.")
         }
         
+        if !allCells.contains(cell) { allCells.append(cell) }
         let system = systems[indexPath.row]
         cell.name.text = system.name
         cell.icone.image = system.getImage()
-        
         return cell
     }
     
     @objc func tap(_ sender: UIGestureRecognizer){
         view.endEditing(true)
     }
+    
+    private var allCells = [SystemTableViewCell]()
+
     
 }
 
