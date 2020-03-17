@@ -36,6 +36,13 @@ class SystemTableViewCell: UITableViewCell, UITextFieldDelegate{
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        // invoke superclass implementation
+        super.prepareForReuse()
+        
+
+    }
+    
 }
 
 extension UITextField{

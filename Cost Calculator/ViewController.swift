@@ -9,12 +9,12 @@
 import UIKit
 var systems: [System] = []
 
-class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource{
+class MainViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource{
     
     
     
     let pickerData = ["Diário", "Semanal", "Mensal", "Anual"]
-
+    var dataList: [String] = []
     @IBOutlet weak var calcule: UIButton!
     
     @IBOutlet var adicionarLabel: UIButton!
@@ -65,7 +65,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         systems.append(System(name: "Aquecedor", image: "flame"))
         systems.append(System(name: "Home Teather",  image: "hifispeaker"))
         systems.append(System(name: "Iluminação", image: "lightbulb"))
-        
+        dataList = ["","","",""]
         
         tableView.reloadData()
         
@@ -100,7 +100,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
             let textField = alert?.textFields![0]
             name = textField!.text ?? "Default"
             systems.append(System(name: name, image: ""))
-            
+            self.dataList.append("")
             let alert = UIAlertController(title: "Novo sistema", message: "Escolha uma imagem", preferredStyle: .alert)
             
             
@@ -301,8 +301,13 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
         
         if !allCells.contains(cell) { allCells.append(cell) }
         let system = systems[indexPath.row]
+        cell.textField.delegate = self
         cell.name.text = system.name
         cell.icone.image = system.getImage()
+        cell.textField.tag = indexPath.row
+        cell.textField.text = dataList[indexPath.row]
+        cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -312,6 +317,17 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDe
     
     private var allCells = [SystemTableViewCell]()
 
+    
+    //MARK:- TEXT FIELD
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+
+        if textField.text != ""{
+
+            dataList[textField.tag] = textField.text!
+        }
+        return true
+    }
     
 }
 
