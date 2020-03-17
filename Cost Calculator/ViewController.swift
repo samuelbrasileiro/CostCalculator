@@ -37,7 +37,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
         setupHelpButton()
         pageControl.numberOfPages = 4
         pageControl.currentPage = 0
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         calcule.frame = CGRect(x: self.view.frame.width/2 - 60, y: self.view.frame.height - 330, width: 120, height: 48)
@@ -188,12 +188,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
         geral.setTime(time: selectedTime)
         geral.isGeral = true
         let geralView = ResultView(system: geral)
-        geralView.frame = CGRect(x: 17, y: 40, width: width-34, height: 260)
+        geralView.frame = CGRect(x: 17, y: 40, width: width-34, height: 250)
         scrollView.addSubview(geralView)
         
         for index in 0..<systems.count{
             let resultView = ResultView(system: systems[index])
-            resultView.frame = CGRect(x: 17 + (width * CGFloat(index + 1)), y: 40, width: width-34, height: 260)
+            resultView.frame = CGRect(x: 17 + (width * CGFloat(index + 1)), y: 40, width: width-34, height: 250)
             scrollView.addSubview(resultView)
         }
         
